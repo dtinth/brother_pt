@@ -54,10 +54,16 @@ the provided functionality was severely limited.
 The full documentation of the raster command set used by the above printers
 can be found [here](http://www.brother.com/product/dev/index.htm).
 
-## Installation
+## Installing dependencies
 
 ```bash
-pip install --upgrade git+https://github.com/treideme/brother_pt.git
+pip install -r requirements.txt
+```
+
+## Running
+
+```bash
+python -m brother_pt print -f image1.png image2.png image3.png
 ```
 
 ## Usage
