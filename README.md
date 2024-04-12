@@ -1,3 +1,13 @@
+Python script to print `.png` files to a USB-connected Brother P710BT label printer.
+
+> [!NOTE]
+> Changes in this fork:
+>
+> - Added support for printing multiple images in a single invocation. (Each invocation of the print command wastes about 2 cm of tape at the beginning, but if multiple images are specified in the same invocation, no blank tapes are created between images.)
+> - Added support for flexible tape (TZE-FX…).
+> - Update image rasterizing code to print pixels with color value less than 0x80.
+> - Added margin so that image is positioned correctly. This is hardcoded for P710BT and may not work for other printers.
+
 ## brother_pt
 
 Related [blog post](https://www.reidemeister.com/?p=544). This is work in progress...
