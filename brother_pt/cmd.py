@@ -83,6 +83,7 @@ class MediaType(IntEnum):
     LAMINATED_TAPE = 0x01
     NON_LAMINATED_TAPE = 0x03
     HEAT_SHRINK_TUBE = 0x11
+    FLEXIBLE_TAPE = 0x14
     INCOMPATIBLE_TAPE = 0xFF
 
 
@@ -232,6 +233,11 @@ def gen_raster_commands(rasterized_image: bytes):
             cmd_buffer.append(cmd)
 
     return cmd_buffer
+
+
+def print_without_feeding():
+    # print and feed [1A]
+    return b"\x0C"
 
 
 def print_with_feeding():
