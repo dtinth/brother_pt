@@ -119,6 +119,12 @@ class BrotherPt:
         self.__write(set_compression_mode())
         for cmd in gen_raster_commands(data):
             self.__write(cmd)
+
+        # Send 6 blank lines to ensure the printer finishes the print job
+        # (This gets image aligned properly in P710BT)
+        for _ in range(6):
+            self.__write(b'\x5A')
+
         if is_last_page:
             self.__write(print_with_feeding())
         else:
