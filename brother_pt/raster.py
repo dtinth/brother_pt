@@ -52,12 +52,9 @@ def select_raster_channel(image: Image):
     elif image.mode == 'L':
         # Use white as indication for background
         return image.point(lambda x: 0xFF if x < 0xFF else 0)
-    elif image.mode == 'RGB':
+    elif image.mode == 'RGB' or image.mode == 'RGBA':
         # Use white as indication for background
-        return image.convert('L').point(lambda x: 0xFF if x < 0xFF else 0)
-    elif image.mode == 'RGBA':
-        # Use alpha, any transparency is not printed
-        return image.split()[-1].point(lambda x: 0xFF if x > 0 else 0)
+        return image.convert('L').point(lambda x: 0xFF if x < 0x80 else 0)
     else:
         raise AttributeError("Unsupported color space for printing: "+image.mode)
 
